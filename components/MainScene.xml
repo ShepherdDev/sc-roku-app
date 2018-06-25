@@ -19,6 +19,7 @@
   <interface>
     <function name="PushView" />
     <function name="PlayVideo" />
+    <function name="ShowMenuSelection" />
   </interface>
 
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />

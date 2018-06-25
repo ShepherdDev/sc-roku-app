@@ -23,7 +23,6 @@ sub runRequest()
 
       m.top.content = event.GetString()
     else
-      stop
       m.top.success = false
       m.top.content = invalid
     end if

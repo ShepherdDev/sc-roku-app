@@ -28,7 +28,7 @@ sub init()
   end if
 
   m.pBackground.observeField("loadStatus", "onBackgroundStatus")
-  m.mbMenuBar.observeField("selectedButtonIndex", "onButtonSelected")
+  m.mbMenuBar.observeField("selectedButtonIndex", "onSelectedButtonIndex")
   m.aFadeMenu.observeField("state", "onFadeMenuState")
   m.aFadeView.observeField("state", "onFadeViewOutState")
 
@@ -90,6 +90,22 @@ sub PlayVideo(url as string)
   PushView(view)
 end sub
 
+sub ShowMenuSelection(item as Object)
+  if item.VideoUrl <> invalid and item.VideoUrl <> ""
+    PlayVideo(item.VideoUrl)
+  else if item.ImageUrl <> invalid and item.ImageUrl <> ""
+    view = CreateObject("roSGNode", "ImageView")
+    view.uri = item.ImageUrl
+    view.mainScene = m.top
+    PushView(view)
+  else if item.PosterListUrl <> invalid and item.PosterListUrl <> ""
+    view = CreateObject("roSGNode", "PosterListView")
+    view.uri = item.PosterListUrl
+    view.mainScene = m.top
+    PushView(view)
+  end if
+end sub
+
 sub onContentChanged()
   m.config = invalid
   if m.task.success = true
@@ -100,16 +116,9 @@ sub onContentChanged()
     m.pBackground.uri = m.config.BackgroundUrl
 
     buttons = []
-    if m.config.IsLiveNow = true
-      buttons.Push("Watch Live")
-    else
-      buttons.Push("Service Schedule")
-    end if
-    buttons.Push("Current Series")
-    buttons.Push("Archives")
-    if m.config.LifeGroupUrl <> invalid and m.config.LifeGroupUrl <> ""
-      buttons.Push("Life Groups")
-    end if
+    for each b in m.config.buttons
+      buttons.Push(b.Title)
+    end for
 
     m.mbMenuBar.buttons = buttons
   else
@@ -171,28 +180,8 @@ function onKeyEvent(key as string, press as boolean) as boolean
   return false
 end function
 
-sub onButtonSelected()
-  if m.mbMenuBar.selectedButton.text = "Service Schedule"
-    view = CreateObject("roSGNode", "ImageView")
-    view.uri = m.config.NotLiveImage
-    view.mainScene = m.top
-    PushView(view)
-  else if m.mbMenuBar.selectedButton.text = "Watch Live"
-    PlayVideo(m.config.LiveUrl)
-  else if m.mbMenuBar.selectedButton.text = "Current Series"
-    view = CreateObject("roSGNode", "PosterListView")
-    view.uri = m.config.CurrentSeriesUrl
-    view.mainScene = m.top
-    PushView(view)
-  else if m.mbMenuBar.selectedButton.text = "Archives"
-    view = CreateObject("roSGNode", "PosterListView")
-    view.uri = m.config.ArchivesUrl
-    view.mainScene = m.top
-    PushView(view)
-  else if m.mbMenuBar.selectedButton.text = "Life Groups"
-    view = CreateObject("roSGNode", "PosterListView")
-    view.uri = m.config.LifeGroupUrl
-    view.mainScene = m.top
-    PushView(view)
-  end if
+sub onSelectedButtonIndex()
+  item = m.config.Buttons[m.mbMenuBar.selectedButtonIndex]
+
+  ShowMenuSelection(item)
 end sub

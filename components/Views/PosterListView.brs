@@ -104,7 +104,6 @@ sub onContentChange()
     m.bsLoading.control = "stop"
     m.bsLoading.visible = false
   else
-    stop
     'TODO: Error'
   end if
 end sub
@@ -121,19 +120,11 @@ sub onItemFocusedChange()
     m.lItemDetailLeft.text = m.config.Items[m.llMenu.itemFocused].DetailLeft
     m.lItemDetailRight.text = m.config.Items[m.llMenu.itemFocused].DetailRight
     m.lItemDescription.text = m.config.Items[m.llMenu.itemFocused].Description
-    print m.lItemDescription.font.size
   end if
 end sub
 
 sub onItemSelectedChange()
   item = m.config.Items[m.llMenu.itemSelected]
 
-  if item.Url <> invalid
-    view = CreateObject("roSGNode", "PosterListView")
-    view.uri = m.config.Items[m.llMenu.itemSelected].Url
-    view.mainScene = m.top.mainScene
-    m.top.mainScene.callFunc("PushView", view)
-  else if item.VideoUrl <> invalid
-    m.top.mainScene.callFunc("PlayVideo", item.VideoUrl)
-  end if
+  m.top.mainScene.callFunc("ShowMenuSelection", item)
 end sub
