@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MenuButton" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+  <children>
+    <Group id="gActive" visible="true">
+      <Poster id="pLeft" uri="pkg:/images/ButtonLeftEdge.png" loadDisplayMode="scaleToFill" />
+      <Poster id="pCenter" uri="pkg:/images/ButtonMiddle.png" loadDisplayMode="scaleToFill" />
+      <Poster id="pRight" uri="pkg:/images/ButtonRightEdge.png" loadDisplayMode="scaleToFill" />
+    </Group>
+    <Label id="lblText" horizAlign="center" vertAlign="center" width="0" text="Test" />
+  </children>
+
+  <interface>
+    <field id="edgeWidth" type="integer" value="20" onChange="onSizeChange" />
+    <field id="width" type="integer" value="100" onChange="onSizeChange" />
+    <field id="height" type="integer" value="80" onChange="onSizeChange" />
+    <field id="text" type="string" onChange="onSizeChange" />
+    <field id="boundingWidth" type="integer" />
+  </interface>
+
+  <script type="text/brightscript" uri="MenuButton.brs" />
+</component>
