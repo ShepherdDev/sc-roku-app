@@ -104,7 +104,7 @@ sub onContentChange()
     m.bsLoading.control = "stop"
     m.bsLoading.visible = false
   else
-    'TODO: Error'
+    LogMessage("Failed to load PosterList content")
   end if
 end sub
 

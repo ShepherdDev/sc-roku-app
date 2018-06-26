@@ -45,12 +45,6 @@ sub init()
   m.task.control = "RUN"
 end sub
 
-sub LogMessage(msg as string)
-  if m.IsDev = true
-    print msg
-  end if
-end sub
-
 sub PushView(view as Object)
   resolution = m.top.getScene().currentDesignResolution
   view.scaleRotateCenter = [resolution.width / 2, resolution.height / 2]
@@ -153,7 +147,7 @@ sub onContentChanged()
 
     m.mbMenuBar.buttons = buttons
   else
-    'TODO: Error'
+    LogMessage("Failed to load main scene content.")
   end if
 end sub
 

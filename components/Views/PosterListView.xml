@@ -23,4 +23,5 @@
   </interface>
 
   <script type="text/brightscript" uri="PosterListView.brs" />
+  <script type="text/brightscript" uri="pkg:/source/Utilities.brs" />
 </component>
