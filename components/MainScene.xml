@@ -3,7 +3,7 @@
   <children>
     <Group id="gMainMenu" visible="false">
       <Poster id="pBackground" />
-      <MenuBar id="mbMenuBar" color="0x121212B0" />
+      <MenuBar id="mbMenuBar" color="0x12121260" />
     </Group>
 
     <Group id="gViews" />
