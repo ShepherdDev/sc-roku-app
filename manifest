@@ -4,8 +4,8 @@ minor_version=0
 build_version=1
 
 # Channel Icons
-mm_icon_focus_sd=pkg:/images/App-Icon-App-SD-246x140.png
-mm_icon_focus_hd=pkg:/images/App-Icon-App-HD-336x210.png
+mm_icon_focus_sd=pkg:/images/App-Icon-SD-246x140.png
+mm_icon_focus_hd=pkg:/images/App-Icon-HD-336x210.png
 
 # Splash Screen
 splash_screen_sd=pkg:/images/Splash-480p.jpg
