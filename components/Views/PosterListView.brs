@@ -1,5 +1,5 @@
 rem --
-rem -- init
+rem -- init()
 rem --
 rem -- Initialize a new PosterList view that will display a list of items
 rem -- in a poster-list style view. This puts a list of items on the right
@@ -98,7 +98,7 @@ rem ** EVENT HANDLERS
 rem *******************************************************
 
 rem --
-rem -- onUriChange
+rem -- onUriChange()
 rem --
 rem -- The URI value has changed. This indicates the URL we should
 rem -- pull our configuration information from. We need to re-download
@@ -123,7 +123,7 @@ sub onUriChange()
 end sub
 
 rem --
-rem -- onContentChange
+rem -- onContentChange()
 rem --
 rem -- The content from the URLTask has been received. Parse it out
 rem -- and update UI elements.
@@ -170,7 +170,7 @@ sub onContentChange()
 end sub
 
 rem --
-rem -- onFocusedChildChange
+rem -- onFocusedChildChange()
 rem --
 rem -- The focus has changed to or from us. If it was set to us then make
 rem -- sure the item list control has the actual focus.
@@ -182,7 +182,7 @@ sub onFocusedChildChange()
 end sub
 
 rem --
-rem -- onItemFocusedChange
+rem -- onItemFocusedChange()
 rem --
 rem -- The menu item focus has changed. Update the UI with the details
 rem -- of the currently focused item.
@@ -197,7 +197,7 @@ sub onItemFocusedChange()
 end sub
 
 rem --
-rem -- onItemSelectedChange
+rem -- onItemSelectedChange()
 rem --
 rem -- An item has been selected from the list. Show the item on the screen.
 rem --

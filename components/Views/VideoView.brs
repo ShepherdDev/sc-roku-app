@@ -1,5 +1,5 @@
 rem --
-rem -- init
+rem -- init()
 rem --
 rem -- Initialize a new Video view. This is used to watch a full-screen
 rem -- video on the device.
@@ -28,7 +28,7 @@ rem ** EVENT HANDLERS
 rem *******************************************************
 
 rem --
-rem -- onUriChange
+rem -- onUriChange()
 rem --
 rem -- The URI for the video we are supposed to play has changed. Update
 rem -- the video object to play the new URI.
@@ -59,7 +59,7 @@ sub onUriChange()
 end sub
 
 rem --
-rem -- onFocusedChildChange
+rem -- onFocusedChildChange()
 rem --
 rem -- Called when we gain or lose focus. If we are gaining focus then
 rem -- ensure that the video object has the true focus.

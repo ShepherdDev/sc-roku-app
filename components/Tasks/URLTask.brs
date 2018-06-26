@@ -1,5 +1,5 @@
 rem --
-rem -- init
+rem -- init()
 rem --
 rem -- Initialize a new URLTask component. This handles retrieving
 rem -- content from a remote URL. The content should be a UTF-8 encoded
@@ -14,7 +14,7 @@ sub init()
 end sub
 
 rem --
-rem -- runRequest
+rem -- runRequest()
 rem --
 rem -- Called on a background thread to process the request.
 rem --

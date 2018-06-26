@@ -1,5 +1,5 @@
 rem --
-rem -- init
+rem -- init()
 rem --
 rem -- The MenuBar presents a horizontal bar of buttons to the user.
 rem -- MenuBar inherits from Rectangle so you can use the same fields
@@ -25,7 +25,7 @@ rem ** EVENT HANDLERS
 rem *******************************************************
 
 rem --
-rem -- onButtonsChange
+rem -- onButtonsChange()
 rem --
 rem -- Called when the field holding the button definitions has changed
 rem -- values. Reconstruct the menu bar to contain the new buttons.
@@ -68,7 +68,7 @@ sub onButtonsChange()
 end sub
 
 rem --
-rem -- onLayoutChange
+rem -- onLayoutChange()
 rem --
 rem -- Called when our own size has changed so that we can re-layout
 rem -- all the buttons to be centered correctly.
@@ -96,7 +96,7 @@ sub onLayoutChange()
 end sub
 
 rem --
-rem -- onFocusedChildChange
+rem -- onFocusedChildChange()
 rem --
 rem -- Called when we gain focus. Ensure that the selected
 rem -- button actually has the focus instead.
@@ -108,14 +108,15 @@ sub onFocusedChildChange()
 end sub
 
 rem --
-rem -- onKeyEvent
-rem --
-rem -- param key: Contains the key that was pressed on the remote.
-rem -- param press: True if the button was pressed, false if released.
+rem -- onKeyEvent(key, press)
 rem --
 rem -- Called when the user presses a button on the remote. Check if we
 rem -- need to handle any keys to change selection or activate their
 rem -- current button.
+rem --
+rem -- @param key Contains the key that was pressed on the remote.
+rem -- @param press True if the button was pressed, false if released.
+rem -- @returns True if the key was handled, false otherwise.
 rem --
 function onKeyEvent(key as string, press as boolean) as boolean
   if press

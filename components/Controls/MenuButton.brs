@@ -1,5 +1,5 @@
 rem --
-rem -- init
+rem -- init()
 rem --
 rem -- Initialize a new MenuButton instance. This object handles the visual
 rem -- display of a single button in the MenuBar.
@@ -25,7 +25,7 @@ rem ** EVENT HANDLERS
 rem *******************************************************
 
 rem --
-rem -- onSizeChange
+rem -- onSizeChange()
 rem --
 rem -- Called when our size has changed. Re-layout all the
 rem -- elements of the button to fit the size.
@@ -82,7 +82,7 @@ sub onSizeChange()
 end sub
 
 rem --
-rem -- onFocusedChildChange
+rem -- onFocusedChildChange()
 rem --
 rem -- Called when we receive or lose focus. Update the UI elements to
 rem -- match.
