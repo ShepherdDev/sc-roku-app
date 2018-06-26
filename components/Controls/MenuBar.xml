@@ -10,8 +10,6 @@
 
     <field id="selectedButton" type="node" />
     <field id="selectedButtonIndex" type="integer" alwaysNotify="true" />
-
-    <function name="getButton" />
   </interface>
 
   <script type="text/brightscript" uri="MenuBar.brs" />
