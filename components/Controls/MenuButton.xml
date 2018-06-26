@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="MenuButton" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
   <children>
-    <Group id="gActive" visible="true">
+    <Group id="gActive" visible="false">
       <Poster id="pLeft" uri="pkg:/images/ButtonLeftEdge.png" loadDisplayMode="scaleToFill" />
       <Poster id="pCenter" uri="pkg:/images/ButtonMiddle.png" loadDisplayMode="scaleToFill" />
       <Poster id="pRight" uri="pkg:/images/ButtonRightEdge.png" loadDisplayMode="scaleToFill" />
