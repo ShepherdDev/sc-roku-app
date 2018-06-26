@@ -7,10 +7,11 @@ sub init()
   m.gMenuBar = m.top.findNode("gMenuBar")
   m.pBackground = m.top.findNode("pBackground")
   m.mbMenuBar = m.top.findNode("mbMenuBar")
-  m.config = invalid
 
-  m.bsLoading.poster.width = 96
-  m.bsLoading.poster.height = 96
+  appInfo = CreateObject("roAppInfo")
+  m.AppRootUrl = AppendResolutionToUrl(appInfo.GetValue("app_root_url"))
+  m.IsDev = appInfo.IsDev()
+  m.config = invalid
 
   resolution = m.top.getScene().currentDesignResolution
   if resolution.resolution = "FHD"
@@ -19,22 +20,22 @@ sub init()
     m.mbMenuBar.width = 1920
     m.mbMenuBar.height = 80
     m.bsLoading.translation = [912, 492]
+    m.bsLoading.poster.width = 96
+    m.bsLoading.poster.height = 96
   else
     rem -- Configure for 1280x720
     m.mbMenuBar.translation = [0, 670]
     m.mbMenuBar.width = 1280
     m.mbMenuBar.height = 50
     m.bsLoading.translation = [592, 312]
+    m.bsLoading.poster.width = 96
+    m.bsLoading.poster.height = 96
   end if
 
   m.pBackground.observeField("loadStatus", "onBackgroundStatus")
   m.mbMenuBar.observeField("selectedButtonIndex", "onSelectedButtonIndex")
   m.aFadeMenu.observeField("state", "onFadeMenuState")
   m.aFadeView.observeField("state", "onFadeViewOutState")
-
-  appInfo = CreateObject("roAppInfo")
-  m.AppRootUrl = AppendResolutionToUrl(appInfo.GetValue("app_root_url"))
-  m.IsDev = appInfo.IsDev()
 
   LogMessage("Launching with Root URL: " + m.AppRootUrl)
 
@@ -96,7 +97,7 @@ sub PlayVideo(url as string)
   PushView(view)
 end sub
 
-sub ShowMenuSelection(item as Object)
+sub ShowItem(item as Object)
   if item.Template <> invalid and item.Url <> invalid and item.Url <> ""
     url = item.Url
 
@@ -208,5 +209,5 @@ end function
 sub onSelectedButtonIndex()
   item = m.config.Buttons[m.mbMenuBar.selectedButtonIndex]
 
-  ShowMenuSelection(item)
+  ShowItem(item)
 end sub

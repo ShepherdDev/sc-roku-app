@@ -19,7 +19,7 @@
   <interface>
     <function name="LogMessage" />
     <function name="PlayVideo" />
-    <function name="ShowMenuSelection" />
+    <function name="ShowItem" />
   </interface>
 
   <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />

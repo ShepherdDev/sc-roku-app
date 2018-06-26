@@ -126,5 +126,5 @@ end sub
 sub onItemSelectedChange()
   item = m.config.Items[m.llMenu.itemSelected]
 
-  m.top.mainScene.callFunc("ShowMenuSelection", item)
+  m.top.mainScene.callFunc("ShowItem", item)
 end sub
