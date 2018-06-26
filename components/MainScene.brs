@@ -235,22 +235,6 @@ sub ShowItem(item as Object)
   end if
 end sub
 
-rem --
-rem -- AppendResolutionToUrl(url)
-rem --
-rem -- Takes a URL and appends the common resolution parameter to it.
-rem --
-rem -- @param url The URL to have the resolution appended.
-rem -- @returns A string that represents the new URL to be used.
-rem --
-function AppendResolutionToUrl(url as string) as string
-  if url.InStr("?") = -1
-    return url + "?Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
-  else
-    return url + "&Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
-  end if
-end function
-
 rem *******************************************************
 rem ** EVENT HANDLERS
 rem *******************************************************
@@ -374,6 +358,7 @@ rem -- required processing to handle the event.
 rem --
 rem -- @param key The description of the key that was pressed or released.
 rem -- @param press True if the key was pressed, false if it was released.
+rem -- @returns True if the key was handled, false otherwise.
 rem --
 function onKeyEvent(key as string, press as boolean) as boolean
   rem --
