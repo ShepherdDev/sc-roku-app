@@ -16,3 +16,5 @@ splash_min_time=0
 
 ui_resolutions=hd,fhd
 uri_resolution_autosub=$$RES$$,480p,720p,1080p
+
+app_root_url=https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json

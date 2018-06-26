@@ -32,11 +32,23 @@ sub init()
   m.aFadeMenu.observeField("state", "onFadeMenuState")
   m.aFadeView.observeField("state", "onFadeViewOutState")
 
+  appInfo = CreateObject("roAppInfo")
+  m.AppRootUrl = AppendResolutionToUrl(appInfo.GetValue("app_root_url"))
+  m.IsDev = appInfo.IsDev()
+
+  LogMessage("Launching with Root URL: " + m.AppRootUrl)
+
   m.bsLoading.control = "start"
   m.task = CreateObject("roSGNode", "URLTask")
-  m.task.url = "https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json?Resolution=" + resolution.height.ToStr() + "p"
+  m.task.url = m.AppRootUrl
   m.task.observeField("content", "onContentChanged")
   m.task.control = "RUN"
+end sub
+
+sub LogMessage(msg as string)
+  if m.IsDev = true
+    print msg
+  end if
 end sub
 
 sub PushView(view as Object)
@@ -93,23 +105,22 @@ end sub
 sub ShowMenuSelection(item as Object)
   if item.Template <> invalid and item.Url <> invalid and item.Url <> ""
     url = item.Url
-    print item.Template, url
 
     if item.Template = "Video"
+      LogMessage("Showing Video: " + url)
+
       PlayVideo(url)
     else if item.Template = "Image"
+      LogMessage("Showing Image: " + url)
+
       view = CreateObject("roSGNode", "ImageView")
       view.uri = url
       view.mainScene = m.top
       PushView(view)
     else if item.Template = "PosterList"
-      if url.InStr("?") = -1
-        url = url + "?Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
-      else
-        url = url + "&Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
-      end if
+      url = AppendResolutionToUrl(url)
+      LogMessage("Showing PosterList: " + url)
 
-      print url
       view = CreateObject("roSGNode", "PosterListView")
       view.uri = url
       view.mainScene = m.top
@@ -117,6 +128,14 @@ sub ShowMenuSelection(item as Object)
     end if
   end if
 end sub
+
+function AppendResolutionToUrl(url as string) as string
+  if url.InStr("?") = -1
+    return url + "?Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
+  else
+    return url + "&Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
+  end if
+end function
 
 sub onContentChanged()
   m.config = invalid
