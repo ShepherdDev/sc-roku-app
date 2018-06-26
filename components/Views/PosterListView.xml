@@ -18,7 +18,7 @@
   </children>
 
   <interface>
-    <field id="uri" type="string" />
+    <field id="uri" type="string" onChange="onUriChange" />
     <field id="mainScene" type="node" />
   </interface>
 
