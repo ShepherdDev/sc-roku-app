@@ -34,7 +34,7 @@ sub init()
 
   m.bsLoading.control = "start"
   m.task = CreateObject("roSGNode", "URLTask")
-  m.task.url = "https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json"
+  m.task.url = "https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json?Resolution=" + resolution.height.ToStr() + "p"
   m.task.observeField("content", "onContentChanged")
   m.task.control = "RUN"
 end sub
@@ -91,18 +91,30 @@ sub PlayVideo(url as string)
 end sub
 
 sub ShowMenuSelection(item as Object)
-  if item.VideoUrl <> invalid and item.VideoUrl <> ""
-    PlayVideo(item.VideoUrl)
-  else if item.ImageUrl <> invalid and item.ImageUrl <> ""
-    view = CreateObject("roSGNode", "ImageView")
-    view.uri = item.ImageUrl
-    view.mainScene = m.top
-    PushView(view)
-  else if item.PosterListUrl <> invalid and item.PosterListUrl <> ""
-    view = CreateObject("roSGNode", "PosterListView")
-    view.uri = item.PosterListUrl
-    view.mainScene = m.top
-    PushView(view)
+  if item.Template <> invalid and item.Url <> invalid and item.Url <> ""
+    url = item.Url
+    print item.Template, url
+
+    if item.Template = "Video"
+      PlayVideo(url)
+    else if item.Template = "Image"
+      view = CreateObject("roSGNode", "ImageView")
+      view.uri = url
+      view.mainScene = m.top
+      PushView(view)
+    else if item.Template = "PosterList"
+      if url.InStr("?") = -1
+        url = url + "?Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
+      else
+        url = url + "&Resolution=" + m.top.getScene().currentDesignResolution.height.ToStr() + "p"
+      end if
+
+      print url
+      view = CreateObject("roSGNode", "PosterListView")
+      view.uri = url
+      view.mainScene = m.top
+      PushView(view)
+    end if
   end if
 end sub
 
