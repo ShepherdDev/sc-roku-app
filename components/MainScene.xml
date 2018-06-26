@@ -9,9 +9,9 @@
     <Group id="gViews" />
 
     <BusySpinner id="bsLoading" uri="pkg:/images/spinner.png" />
-    <Animation id="aFadeMenu" duration="0.35" repeat="false" easeFunction="linear">
-      <FloatFieldInterpolator id="aFadeMenuValue" key="[0.0, 0.5, 1.0]" keyValue="[0, 0.25, 1]" fieldToInterp="gMainMenu.opacity" />
-      <FloatFieldInterpolator id="aFadeMenuValue2" key="[0.0, 0.5]" keyValue="[1, 0]" fieldToInterp="bsLoading.opacity" />
+    <Animation id="aFadeMenu" duration="0.70" repeat="false" easeFunction="linear">
+      <FloatFieldInterpolator id="aFadeMenuValue" key="[0.0, 0.5, 1.0]" keyValue="[0, 1, 1]" fieldToInterp="gMainMenu.opacity" />
+      <FloatFieldInterpolator id="aFadeMenuValue2" key="[0.0, 0.5, 1.0]" keyValue="[1, 1, 0]" fieldToInterp="bsLoading.opacity" />
     </Animation>
     <Animation id="aFadeView" duration="0.35" repeat="false" easeFunction="linear" />
   </children>
