@@ -22,8 +22,7 @@ sub init()
   rem --
   rem -- Set the Application Root URL to use.
   rem --
-  appInfo = CreateObject("roAppInfo")
-  m.AppRootUrl = AppendResolutionToUrl(appInfo.GetValue("app_root_url"))
+  m.AppRootUrl = AppendResolutionToUrl(ReadConfig().ApplicationRootUrl)
 
   rem --
   rem -- Configure UI elements for the screen size we are running.

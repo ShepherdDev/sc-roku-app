@@ -1,4 +1,17 @@
 rem --
+rem -- ReadConfig()
+rem --
+rem -- Read the configuration file specified in the manifest.
+rem --
+rem -- @returns An object representing the JSON config file.
+function ReadConfig() as object
+  appInfo = CreateObject("roAppInfo")
+  json = ReadAsciiFile(appInfo.GetValue("app_config"))
+
+  return ParseJSON(json)
+end function
+
+rem --
 rem -- LogMessage(msg)
 rem --
 rem -- If running in development mode, logs a message to the
