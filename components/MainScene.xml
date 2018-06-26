@@ -22,6 +22,6 @@
     <function name="ShowItem" />
   </interface>
 
-  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
-  <script type="text/brightscript" uri="pkg:/source/Utilities.brs" />
+  <script type="text/brightscript" uri="MainScene.brs" />
+  <script type="text/brightscript" uri="Libs/Utilities.brs" />
 </component>
