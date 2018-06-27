@@ -1,3 +1,6 @@
 {
-  "ApplicationRootUrl": "https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json"
+  "ApplicationRootUrl": "https://www.shepherdchurch.com/Webhooks/Lava.ashx/roku/sc/main.json",
+  "VideoPlayer": {
+    "FilledBarBlendColor": "0x43B2E5FF"
+  }
 }

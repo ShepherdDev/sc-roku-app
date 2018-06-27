@@ -4,7 +4,7 @@ sub Main()
   m.port = CreateObject("roMessagePort")
   screen.setMessagePort(m.port)
 
-  scene = screen.CreateScene("MainScene")
+  scene = screen.CreateScene("CrexScene")
   screen.show()
 
   while(true)
