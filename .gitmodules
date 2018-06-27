@@ -1,0 +1,4 @@
+[submodule "components/crex"]
+	path = components/crex
+	url = https://github.com/BlueBoxMoon/crex.git
+	branch = master
